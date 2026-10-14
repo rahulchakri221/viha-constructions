@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viha Group of Constructions | Quality Our Identity</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            950: '#060B14',
+                            900: '#0A0F1D',
+                            800: '#0F172A',
+                            700: '#1E293B',
+                        },
+                        gold: {
+                            DEFAULT: '#D4AF37',
+                            light: '#F59E0B',
+                            dark: '#9A7B38',
+                            accent: '#FBBF24'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Three.js for 3D Cinematic Scene -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- GSAP for Smooth Scroll & Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0F1D;
+            color: #F8FAFC;
+        }
+        h1, h2, h3, .font-serif-custom {
+            font-family: 'Playfair Display', serif;
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FDE68A 0%, #D4AF37 50%, #9A7B38 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0F1D;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+        /* Cinematic Hero Scroll Container */
+        #hero-scroll-container {
+            height: 500vh;
+            position: relative;
+        }
+        #hero-sticky-viewport {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-navy-900 text-slate-100 selection:bg-gold selection:text-navy-950 overflow-x-hidden">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-navy-950 via-navy-800 to-navy-950 text-gold-light py-2 px-4 text-xs sm:text-sm font-medium border-b border-gold/20 flex justify-between items-center z-50 relative">
+        <div class="max-w-7xl mx-auto w-full flex flex-col sm:flex-row justify-between items-center gap-1">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-helmet-safety text-gold animate-bounce"></i>
+                <span>Residential | Commercial | Industrial — <strong>From Foundation to Finishing... We Build Your Dreams</strong></span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="https://www.instagram.com/vihagroup?vrfl=OGk3YnIwejg5NG01" target="_blank" class="hover:text-white transition flex items-center gap-1.5">
+                    <i class="fa-brands fa-instagram text-gold"></i> @vihagroup
+                </a>
+                <a href="#contact" class="hover:text-white transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-phone text-gold"></i> +91 (Enquire Now)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header id="navbar" class="sticky top-0 z-40 transition-all duration-300 bg-navy-950/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
+            
+            <!-- Exact Logo Recreated from Asset -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="relative w-14 h-14 flex items-center justify-center">
+                    <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-xl">
+                        <polygon points="5,20 38,75 22,75 0,20" fill="#0A0F1D" />
+                        <polygon points="12,20 48,85 30,85 0,20" fill="url(#goldGrad)" />
+                        <!-- Skyscrapers inside V -->
+                        <rect x="32" y="25" width="5" height="40" fill="#94A3B8" />
+                        <rect x="40" y="15" width="7" height="50" fill="url(#goldGrad)" />
+                        <rect x="50" y="28" width="5" height="37" fill="#CBD5E1" />
+                        <!-- Bold Navy V & IHA -->
+                        <path d="M20,15 L45,85 L65,85 L85,15 L68,15 L55,60 L38,15 Z" fill="#0F172A" />
+                    </svg>
+                    <defs>
+                        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FDE68A" />
+                            <stop offset="50%" stop-color="#D4AF37" />
+                            <stop offset="100%" stop-color="#9A7B38" />
+                        </linearGradient>
+                    </defs>
+                </div>
+                <div class="flex flex-col">
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-2xl sm:text-3xl font-extrabold tracking-wider font-serif-custom text-white">VIHA</span>
+                        <span class="text-xs sm:text-sm font-semibold tracking-wider text-gold uppercase">Group of Constructions</span>
+                    </div>
+                    <span class="text-[10px] sm:text-xs text-slate-400 italic tracking-widest border-t border-gold/40 pt-0.5">— Quality our identity —</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden lg:flex items-center gap-8 font-medium text-sm">
+                <a href="#" class="text-gold hover:text-white transition">Home</a>
+                <a href="#about" class="text-slate-300 hover:text-gold transition">About Us</a>
+                <a href="#founder" class="text-slate-300 hover:text-gold transition">Founder</a>
+                <a href="#services" class="text-slate-300 hover:text-gold transition">Services</a>
+                <a href="#clients" class="text-slate-300 hover:text-gold transition">Clients</a>
+                <a href="#contact" class="bg-gradient-to-r from-gold to-gold-dark text-navy-950 font-bold px-5 py-2.5 rounded-full shadow-lg hover:opacity-90 transition transform hover:-translate-y-0.5">Get in Touch</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-2xl text-gold focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Modal -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-navy-950 border-b border-slate-800 px-6 py-6 space-y-4 shadow-2xl">
+            <a href="#" class="block text-gold font-medium py-1">Home</a>
+            <a href="#about" class="block text-slate-300 hover:text-gold py-1">About Us</a>
+            <a href="#founder" class="block text-slate-300 hover:text-gold py-1">Founder</a>
+            <a href="#services" class="block text-slate-300 hover:text-gold py-1">Services</a>
+            <a href="#clients" class="block text-slate-300 hover:text-gold py-1">Clients</a>
+            <a href="#contact" class="block text-center bg-gold text-navy-950 font-bold py-2.5 rounded-lg shadow">Get in Touch</a>
+        </div>
+    </header>
+
+    <!-- Ultra-Cinematic 6-Stage Scroll Hero Section -->
+    <section id="hero-scroll-container">
+        <div id="hero-sticky-viewport">
+            <!-- Three.js 3D WebGL Canvas -->
+            <div id="cinematic-3d-canvas" class="absolute inset-0 z-0"></div>
+
+            <!-- Dark Overlay Vignette -->
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-navy-950/60 pointer-events-none z-10"></div>
+
+            <!-- Narrative Stage Overlays (Controlled by GSAP ScrollTrigger) -->
+            <div class="relative z-20 max-w-7xl mx-auto px-4 h-full flex items-center justify-center pointer-events-none">
+                
+                <!-- Stage 1: Barren Land -->
+                <div id="stage-1" class="hero-stage text-center absolute transition-opacity duration-1000 opacity-100 max-w-3xl">
+                    <span class="inline-block px-4 py-1.5 rounded-full glass-card border border-gold/30 text-gold text-xs sm:text-sm font-semibold mb-4 tracking-widest uppercase">Stage 01 • The Vision</span>
+                    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight font-serif-custom mb-4 text-white drop-shadow-lg">
+                        "EVERY GREAT STRUCTURE BEGINS WITH A VISION"
+                    </h1>
+                    <p class="text-slate-300 text-lg font-light">Scroll down to initiate groundbreaking and development.</p>
+                </div>
+
+                <!-- Stage 2: Groundbreaking -->
+                <div id="stage-2" class="hero-stage text-center absolute transition-opacity duration-1000 opacity-0 max-w-3xl">
+                    <span class="inline-block px-4 py-1.5 rounded-full glass-card border border-gold/30 text-gold text-xs sm:text-sm font-semibold mb-4 tracking-widest uppercase">Stage 02 • Groundbreaking</span>
+                    <h2 class="text-4xl sm:text-6xl font-extrabold tracking-tight font-serif-custom mb-4 text-white drop-shadow-lg">
+                        "FROM BARE LAND TO BRILLIANT DESIGN"
+                    </h2>
+                    <p class="text-slate-300 text-lg font-light">Excavation, foundation trenches, and steel reinforcement in progress.</p>
+                </div>
+
+                <!-- Stage 3: Construction Time-Lapse -->
+                <div id="stage-3" class="hero-stage text-center absolute transition-opacity duration-1000 opacity-0 max-w-3xl">
+                    <span class="inline-block px-4 py-1.5 rounded-full glass-card border border-gold/30 text-gold text-xs sm:text-sm font-semibold mb-4 tracking-widest uppercase">Stage 03 • Structural Evolution</span>
+                    <h2 class="text-4xl sm:text-6xl font-extrabold tracking-tight font-serif-custom mb-4 text-white drop-shadow-lg">
+                        "ENGINEERED WITH PRECISION. BUILT TO LAST."
+                    </h2>
+                    <p class="text-slate-300 text-lg font-light">Floors rising, columns, brickwork, and architectural facade taking shape.</p>
+                </div>
+
+                <!-- Stage 4: Grand Golden Hour Reveal -->
+                <div id="stage-4" class="hero-stage text-center absolute transition-opacity duration-1000 opacity-0 max-w-3xl">
+                    <span class="inline-block px-4 py-1.5 rounded-full glass-card border border-gold/30 text-gold text-xs sm:text-sm font-semibold mb-4 tracking-widest uppercase">Stage 04 • The Masterpiece</span>
+                    <h2 class="text-4xl sm:text-6xl font-extrabold tracking-tight font-serif-custom mb-4 text-white drop-shadow-lg">
+                        "WE DON'T JUST BUILD STRUCTURES.<br><span class="gold-gradient-text">WE CREATE THE PLACES YOU CALL HOME.</span>"
+                    </h2>
+                    <div class="flex flex-wrap justify-center gap-4 pt-6 pointer-events-auto">
+                        <a href="#services" class="bg-gradient-to-r from-gold to-gold-dark text-navy-950 font-bold px-8 py-4 rounded-xl shadow-2xl hover:scale-105 transition">
+                            EXPLORE OUR PROJECTS
+                        </a>
+                        <a href="#contact" class="glass-card hover:bg-navy-800 text-white font-semibold px-8 py-4 rounded-xl border border-gold/40 transition">
+                            START YOUR PROJECT
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Stage 5: Camera Entry into Luxury Interior -->
+                <div id="stage-5" class="hero-stage text-center absolute transition-opacity duration-1000 opacity-0 max-w-3xl">
+                    <span class="inline-block px-4 py-1.5 rounded-full glass-card border border-gold/30 text-gold text-xs sm:text-sm font-semibold mb-4 tracking-widest uppercase">Stage 05 • Architectural Sanctuary</span>
+                    <h2 class="text-4xl sm:text-6xl font-extrabold tracking-tight font-serif-custom mb-4 text-white drop-shadow-lg">
+                        "YOUR DREAM. OUR FOUNDATION."
+                    </h2>
+                    <p class="text-slate-300 text-lg font-light mb-6">From the first blueprint to the final finishing touch, we build spaces designed for life.</p>
+                    <div class="pointer-events-auto">
+                        <a href="#contact" class="inline-block bg-gradient-to-r from-gold to-gold-dark text-navy-950 font-bold px-8 py-4 rounded-xl shadow-2xl hover:scale-105 transition">
+                            LET'S BUILD YOUR FUTURE
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center text-gold/80 text-xs tracking-widest uppercase animate-bounce pointer-events-none">
+                <span>Scroll to Experience</span>
+                <i class="fa-solid fa-chevron-down mt-1"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us & Journey Section -->
+    <section id="about" class="py-24 bg-gradient-to-b from-navy-950 to-navy-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <span class="text-gold font-semibold text-sm tracking-widest uppercase">— Who We Are —</span>
+                <h2 class="text-3xl sm:text-5xl font-bold font-serif-custom mt-2 mb-4">Our Journey. Our Experience. Our Commitment.</h2>
+                <p class="text-slate-300 font-light">Building excellence from labour contracting roots to comprehensive construction leadership since 2009.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Journey Narrative -->
+                <div class="space-y-6" data-aos="fade-right">
+                    <div class="glass-card p-8 rounded-2xl border border-gold/20 space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center text-gold text-xl">
+                                <i class="fa-solid fa-timeline"></i>
+                            </div>
+                            <h3 class="text-xl font-bold font-serif-custom text-white">Evolution Since 2009</h3>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Viha Group of Constructions is built on a strong foundation of experience, hard work, dedication, and an uncompromising commitment to quality. Our journey began in 2009 as a labour contracting business, growing through consistent performance and reliable execution.
+                        </p>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            As capabilities expanded, we progressed from labour contracting to material contracting, taking on greater responsibilities and delivering comprehensive turnkey construction solutions across residential, commercial, and industrial sectors.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="glass-card p-6 rounded-2xl border border-gold/20">
+                            <div class="text-gold text-2xl mb-2"><i class="fa-solid fa-eye"></i></div>
+                            <h4 class="font-bold text-white mb-1">Our Vision</h4>
+                            <p class="text-xs text-slate-300">To establish Viha Group as a trusted name by delivering quality-driven projects and long-term client value.</p>
+                        </div>
+                        <div class="glass-card p-6 rounded-2xl border border-gold/20">
+                            <div class="text-gold text-2xl mb-2"><i class="fa-solid fa-bullseye"></i></div>
+                            <h4 class="font-bold text-white mb-1">Our Mission</h4>
+                            <p class="text-xs text-slate-300">To execute every project with integrity, safety, and efficiency while continuously elevating our capabilities.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Core Strengths Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" data-aos="fade-left">
+                    <div class="glass-card p-6 rounded-2xl border border-gold/20 hover:border-gold transition duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-gold/10 group-hover:bg-gold/20 flex items-center justify-center text-gold text-xl mb-4 transition">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 text-white">Industry Experience</h4>
+                        <p class="text-xs text-slate-300">A robust journey in the construction industry dating back to 2009 with hands-on mastery.</p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border border-gold/20 hover:border-gold transition duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-gold/10 group-hover:bg-gold/20 flex items-center justify-center text-gold text-xl mb-4 transition">
+                            <i class="fa-solid fa-hammer"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 text-white">Construction Expertise</h4>
+                        <p class="text-xs text-slate-300">Seamless transition across labour contracting, material contracting, and site execution.</p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border border-gold/20 hover:border-gold transition duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-gold/10 group-hover:bg-gold/20 flex items-center justify-center text-gold text-xl mb-4 transition">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 text-white">Quality Commitment</h4>
+                        <p class="text-xs text-slate-300">Focus on superior workmanship, premium material sourcing, and rigorous execution standards.</p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl border border-gold/20 hover:border-gold transition duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-gold/10 group-hover:bg-gold/20 flex items-center justify-center text-gold text-xl mb-4 transition">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 text-white">Client Relationships</h4>
+                        <p class="text-xs text-slate-300">Building trust through absolute transparency, reliability, and consistent performance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Profile Section -->
+    <section id="founder" class="py-24 bg-navy-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="glass-card p-8 sm:p-12 rounded-3xl border border-gold/30 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 flex justify-center" data-aos="zoom-in">
+                    <div class="relative w-64 h-80 sm:w-72 sm:h-96 rounded-2xl overflow-hidden border-2 border-gold shadow-2xl group">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent z-10"></div>
+                        <img src="https://placehold.co/400x500/0F172A/D4AF37?text=Balu+Challa" alt="Mr. Balu Challa" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute bottom-4 left-4 z-20">
+                            <h4 class="text-xl font-bold font-serif-custom text-white">Mr. Balu Challa</h4>
+                            <p class="text-xs text-gold">Founder – Viha Group</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 space-y-6" data-aos="fade-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/20 text-gold text-xs font-semibold">
+                        <i class="fa-solid fa-user-tie"></i> Leadership Profile
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold font-serif-custom">Mr. Balu Challa</h2>
+                    <h4 class="text-gold font-medium text-lg">Founder – Viha Group of Constructions</h4>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        With construction industry experience dating back to 2009, Mr. Balu Challa has built his professional journey from labour contracting to material contracting and now to establishing Viha Group of Constructions.
+                    </p>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        His journey reflects practical industry knowledge, dedication, and a vision to build a construction company founded on quality, trust, and professional excellence. Under his leadership, Viha Group continues to deliver dependable infrastructure and turnkey construction solutions.
+                    </p>
+                    <div class="pt-4 flex items-center gap-6 text-sm">
+                        <div class="flex items-center gap-2 text-gold">
+                            <i class="fa-solid fa-check-circle"></i> Practical Expertise
+                        </div>
+                        <div class="flex items-center gap-2 text-gold">
+                            <i class="fa-solid fa-check-circle"></i> Strategic Vision
+                        </div>
+                        <div class="flex items-center gap-2 text-gold">
+                            <i class="fa-solid fa-check-circle"></i> Client-Centric Approach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section id="services" class="py-24 bg-gradient-to-b from-navy-900 to-navy-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <span class="text-gold font-semibold text-sm tracking-widest uppercase">— What We Do —</span>
+                <h2 class="text-3xl sm:text-5xl font-bold font-serif-custom mt-2 mb-4">Our Core Services</h2>
+                <p class="text-slate-300 font-light">Comprehensive construction solutions from foundation to finishing.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="glass-card p-8 rounded-2xl border border-gold/20 hover:border-gold transition duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 rounded-2xl bg-gold/20 flex items-center justify-center text-gold text-2xl mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Building Construction</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">Expert execution of robust building structures with precision engineering, quality materials, and timely delivery.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-card p-8 rounded-2xl border border-gold/20 hover:border-gold transition duration-300 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 rounded-2xl bg-gold/20 flex items-center justify-center text-gold text-2xl mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-house-chimney"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Residential Projects</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">Crafting luxurious villas, apartments, and independent homes designed for comfort, aesthetics, and structural longevity.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-card p-8 rounded-2xl border border-gold/20 hover:border-gold transition duration-300 group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 rounded-2xl bg-gold/20 flex items-center justify-center text-gold text-2xl mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-city"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Commercial Buildings</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">Modern corporate offices, retail spaces, and commercial complexes engineered for high traffic and efficiency.</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="glass-card p-8 rounded-2xl border border-gold/20 hover:border-gold transition duration-300 group" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-14 h-14 rounded-2xl bg-gold/20 flex items-center justify-center text-gold text-2xl mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-industry"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Industrial Structures</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">Warehouses, factories, and heavy industrial facilities built with strict safety and operational standards.</p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="glass-card p-8 rounded-2xl border border-gold/20 hover:border-gold transition duration-300 group" data-aos="fade-up" data-aos-delay="500">
+                    <div class="w-14 h-14 rounded-2xl bg-gold/20 flex items-center justify-center text-gold text-2xl mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-road"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Infrastructure Development</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">Contributing to urban and rural development with dependable infrastructure and civil engineering works.</p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="glass-card p-8 rounded-2xl border border-gold/20 hover:border-gold transition duration-300 group" data-aos="fade-up" data-aos-delay="600">
+                    <div class="w-14 h-14 rounded-2xl bg-gold/20 flex items-center justify-center text-gold text-2xl mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Renovation & Turnkey Projects</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">End-to-end turnkey solutions from conception to handover, including extensive remodeling and renovation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prestigious Client List Section -->
+    <section id="clients" class="py-24 bg-navy-950 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <span class="text-gold font-semibold text-sm tracking-widest uppercase">— Trusted Partners —</span>
+                <h2 class="text-3xl sm:text-5xl font-bold font-serif-custom mt-2 mb-4">Our Prestigious Client List</h2>
+                <p class="text-slate-300 font-light">Proudly collaborating with top-tier construction and infrastructure leaders.</p>
+            </div>
+
+            <!-- Client Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Client 1 -->
+                <div class="glass-card p-6 rounded-2xl border border-gold/20 flex flex-col items-center justify-center text-center hover:border-gold transition duration-300 group">
+                    <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold text-lg mb-3 group-hover:bg-gold group-hover:text-navy-950 transition">01</div>
+                    <h4 class="text-xl font-bold font-serif-custom text-white">JMC</h4>
+                    <span class="text-xs text-slate-400 mt-1">Projects Partner</span>
+                </div>
+
+                <!-- Client 2 -->
+                <div class="glass-card p-6 rounded-2xl border border-gold/20 flex flex-col items-center justify-center text-center hover:border-gold transition duration-300 group">
+                    <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold text-lg mb-3 group-hover:bg-gold group-hover:text-navy-950 transition">02</div>
+                    <h4 class="text-xl font-bold font-serif-custom text-white">L&T</h4>
+                    <span class="text-xs text-slate-400 mt-1">Infrastructure Partner</span>
+                </div>
+
+                <!-- Client 3 -->
+                <div class="glass-card p-6 rounded-2xl border border-gold/20 flex flex-col items-center justify-center text-center hover:border-gold transition duration-300 group">
+                    <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold text-lg mb-3 group-hover:bg-gold group-hover:text-navy-950 transition">03</div>
+                    <h4 class="text-xl font-bold font-serif-custom text-white">Nambiar Builders</h4>
+                    <span class="text-xs text-slate-400 mt-1">Residential Partner</span>
+                </div>
+
+                <!-- Client 4 -->
+                <div class="glass-card p-6 rounded-2xl border border-gold/20 flex flex-col items-center justify-center text-center hover:border-gold transition duration-300 group">
+                    <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold text-lg mb-3 group-hover:bg-gold group-hover:text-navy-950 transition">04</div>
+                    <h4 class="text-xl font-bold font-serif-custom text-white">Indhya Estate</h4>
+                    <span class="text-xs text-slate-400 mt-1">Real Estate Partner</span>
+                </div>
+
+                <!-- Client 5 -->
+                <div class="glass-card p-6 rounded-2xl border border-gold/20 flex flex-col items-center justify-center text-center hover:border-gold transition duration-300 group">
+                    <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold text-lg mb-3 group-hover:bg-gold group-hover:text-navy-950 transition">05</div>
+                    <h4 class="text-xl font-bold font-serif-custom text-white">Svamitva Land Marks</h4>
+                    <span class="text-xs text-slate-400 mt-1">Development Partner</span>
+                </div>
+
+                <!-- Client 6 -->
+                <div class="glass-card p-6 rounded-2xl border border-gold/20 flex flex-col items-center justify-center text-center hover:border-gold transition duration-300 group">
+                    <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold text-lg mb-3 group-hover:bg-gold group-hover:text-navy-950 transition">06</div>
+                    <h4 class="text-xl font-bold font-serif-custom text-white">MFAR</h4>
+                    <span class="text-xs text-slate-400 mt-1">Construction Partner</span>
+                </div>
+
+                <!-- Client 7 -->
+                <div class="glass-card p-6 rounded-2xl border border-gold/20 flex flex-col items-center justify-center text-center hover:border-gold transition duration-300 group">
+                    <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold text-lg mb-3 group-hover:bg-gold group-hover:text-navy-950 transition">07</div>
+                    <h4 class="text-xl font-bold font-serif-custom text-white">BLK</h4>
+                    <span class="text-xs text-slate-400 mt-1">Engineering Partner</span>
+                </div>
+
+                <!-- Client 8 -->
+                <div class="glass-card p-6 rounded-2xl border border-gold/20 flex flex-col items-center justify-center text-center hover:border-gold transition duration-300 group">
+                    <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold text-lg mb-3 group-hover:bg-gold group-hover:text-navy-950 transition">08</div>
+                    <h4 class="text-xl font-bold font-serif-custom text-white">KPC</h4>
+                    <span class="text-xs text-slate-400 mt-1">Infrastructure Partner</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-gradient-to-b from-navy-950 to-navy-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="space-y-6" data-aos="fade-right">
+                    <span class="text-gold font-semibold text-sm tracking-widest uppercase">— Get In Touch —</span>
+                    <h2 class="text-3xl sm:text-5xl font-bold font-serif-custom">Let's Build Your Dream Project Together</h2>
+                    <p class="text-slate-300 leading-relaxed">
+                        Whether you are planning a residential villa, commercial complex, or industrial structure, our expert team is ready to deliver quality craftsmanship from foundation to finishing.
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center text-gold">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Headquarters</h4>
+                                <p class="text-xs text-slate-300">Viha Group of Constructions, India</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center text-gold">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Official Instagram</h4>
+                                <a href="https://www.instagram.com/vihagroup?vrfl=OGk3YnIwejg5NG01" target="_blank" class="text-xs text-gold hover:underline">instagram.com/vihagroup</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="glass-card p-8 sm:p-10 rounded-3xl border border-gold/30 shadow-2xl" data-aos="fade-left">
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gold mb-2">Your Full Name</label>
+                            <input type="text" required placeholder="John Doe" class="w-full bg-navy-950/80 border border-slate-700 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-gold transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gold mb-2">Email Address or Phone</label>
+                            <input type="text" required placeholder="+91 98765 43210" class="w-full bg-navy-950/80 border border-slate-700 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-gold transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gold mb-2">Project Type</label>
+                            <select class="w-full bg-navy-950/80 border border-slate-700 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-gold transition">
+                                <option>Residential Construction</option>
+                                <option>Commercial Building</option>
+                                <option>Industrial Structure</option>
+                                <option>Renovation & Turnkey</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gold mb-2">Project Details</label>
+                            <textarea rows="4" required placeholder="Tell us about your requirements..." class="w-full bg-navy-950/80 border border-slate-700 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-gold transition"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-gold to-gold-dark text-navy-950 font-bold py-4 rounded-xl shadow-xl hover:opacity-95 transition">
+                            Send Message
+                        </button>
+                    </form>
+                    <div id="form-success" class="hidden mt-4 p-4 rounded-xl bg-emerald-900/50 border border-emerald-500 text-emerald-200 text-center text-sm">
+                        Thank you! Your message has been sent successfully. We will get back to you shortly.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with Required Designer Credit -->
+    <footer class="bg-navy-950 border-t border-slate-800 py-12 text-slate-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="space-y-4 md:col-span-2">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10">
+                        <svg viewBox="0 0 100 100" class="w-full h-full">
+                            <polygon points="12,20 48,85 30,85 0,20" fill="url(#goldGradFooter)" />
+                            <path d="M20,15 L45,85 L65,85 L85,15 L68,15 L55,60 L38,15 Z" fill="#0F172A" />
+                        </svg>
+                        <defs>
+                            <linearGradient id="goldGradFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#FDE68A" />
+                                <stop offset="100%" stop-color="#9A7B38" />
+                            </linearGradient>
+                        </defs>
+                    </div>
+                    <span class="text-xl font-bold font-serif-custom text-white">VIHA <span class="text-gold text-xs font-sans uppercase">Group of Constructions</span></span>
+                </div>
+                <p class="text-xs text-slate-400 max-w-sm">
+                    From foundation to finishing... We build your dreams. Quality is not just our promise — it is our identity.
+                </p>
+                <div class="flex items-center gap-4 text-gold pt-2">
+                    <a href="https://www.instagram.com/vihagroup?vrfl=OGk3YnIwejg5NG01" target="_blank" class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:bg-gold hover:text-navy-950 transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#contact" class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:bg-gold hover:text-navy-950 transition"><i class="fa-solid fa-phone"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-4 font-serif-custom">Quick Links</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#" class="hover:text-gold transition">Home</a></li>
+                    <li><a href="#about" class="hover:text-gold transition">About Us</a></li>
+                    <li><a href="#founder" class="hover:text-gold transition">Founder Profile</a></li>
+                    <li><a href="#services" class="hover:text-gold transition">Our Services</a></li>
+                    <li><a href="#clients" class="hover:text-gold transition">Client List</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-4 font-serif-custom">Services</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><span class="text-slate-400">Building Construction</span></li>
+                    <li><span class="text-slate-400">Residential Projects</span></li>
+                    <li><span class="text-slate-400">Commercial Buildings</span></li>
+                    <li><span class="text-slate-400">Industrial Structures</span></li>
+                    <li><span class="text-slate-400">Turnkey Projects</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs gap-4">
+            <p>&copy; 2026 Viha Group of Constructions. All rights reserved.</p>
+            <p class="text-gold font-bold tracking-wider uppercase">Website designed by RAHULCHAKRI KASUKURTHI</p>
+        </div>
+    </footer>
+
+    <!-- Three.js Cinematic 3D Hero Animation & GSAP ScrollTrigger Script -->
+    <script>
+        // Initialize AOS
+        AOS.init({ once: true, duration: 800 });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        // Form Submit Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            document.getElementById('contact-form').style.display = 'none';
+            document.getElementById('form-success').classList.remove('hidden');
+        }
+
+        // Three.js & GSAP Cinematic Hero Experience
+        window.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('cinematic-3d-canvas');
+            if (!container) return;
+
+            const scene = new THREE.Scene();
+            scene.fog = new THREE.FogExp2(0x0A0F1D, 0.015);
+
+            const camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 1000);
+            camera.position.set(0, 25, 45);
+            camera.lookAt(0, 0, 0);
+
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            container.appendChild(renderer.domElement);
+
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0x334155, 1.2);
+            scene.add(ambientLight);
+
+            const sunLight = new THREE.DirectionalLight(0xFDE68A, 2.5);
+            sunLight.position.set(30, 40, 20);
+            sunLight.castShadow = true;
+            scene.add(sunLight);
+
+            const blueFill = new THREE.DirectionalLight(0x1E3A8A, 1.0);
+            blueFill.position.set(-30, 20, -20);
+            scene.add(blueFill);
+
+            // Ground (Stage 1: Barren Land)
+            const groundGeo = new THREE.PlaneGeometry(100, 100, 32, 32);
+            const groundMat = new THREE.MeshStandardMaterial({
+                color: 0x1E293B,
+                roughness: 0.9,
+                metalness: 0.1,
+                flatShading: true
+            });
+            const ground = new THREE.Mesh(groundGeo, groundMat);
+            ground.rotation.x = -Math.PI / 2;
+            ground.receiveShadow = true;
+            scene.add(ground);
+
+            // Construction Group (Building & Foundation)
+            const constructionGroup = new THREE.Group();
+            scene.add(constructionGroup);
+
+            // Foundation pit / Trench
+            const trenchGeo = new THREE.BoxGeometry(14, 0.2, 14);
+            const trenchMat = new THREE.MeshStandardMaterial({ color: 0x090D16, roughness: 0.9 });
+            const trench = new THREE.Mesh(trenchGeo, trenchMat);
+            trench.position.y = 0.1;
+            constructionGroup.add(trench);
+
+            // Foundation pillars / Rebar (Stage 2)
+            const rebarGroup = new THREE.Group();
+            const rebarMat = new THREE.MeshStandardMaterial({ color: 0xD4AF37, metalness: 0.9, roughness: 0.2 });
+            for(let x = -5; x <= 5; x += 5) {
+                for(let z = -5; z <= 5; z += 5) {
+                    const colGeo = new THREE.CylinderGeometry(0.2, 0.2, 8, 8);
+                    const col = new THREE.Mesh(colGeo, rebarMat);
+                    col.position.set(x, 4, z);
+                    rebarGroup.add(col);
+                }
+            }
+            rebarGroup.scale.y = 0; // Starts hidden
+            constructionGroup.add(rebarGroup);
+
+            // Main Building Structure (Stage 3 & 4)
+            const buildingGroup = new THREE.Group();
+            const concreteMat = new THREE.MeshStandardMaterial({ color: 0x334155, roughness: 0.5 });
+            const glassMat = new THREE.MeshPhysicalMaterial({ color: 0x93C5FD, transmission: 0.8, opacity: 0.8, transparent: true, roughness: 0.1 });
+            const goldAccentMat = new THREE.MeshStandardMaterial({ color: 0xD4AF37, metalness: 0.8, roughness: 0.2 });
+
+            const towerGeo = new THREE.BoxGeometry(12, 18, 12);
+            const tower = new THREE.Mesh(towerGeo, concreteMat);
+            tower.position.y = 9;
+            tower.castShadow = true;
+            tower.receiveShadow = true;
+            buildingGroup.add(tower);
+
+            // Add glass windows & gold details
+            for(let i = 2; i < 16; i += 3) {
+                const floorGeo = new THREE.BoxGeometry(12.4, 0.4, 12.4);
+                const floorSlab = new THREE.Mesh(floorGeo, goldAccentMat);
+                floorSlab.position.y = i;
+                buildingGroup.add(floorSlab);
+            }
+
+            buildingGroup.scale.y = 0; // Starts hidden
+            constructionGroup.add(buildingGroup);
+
+            // Luxury Interior Scene (Stage 5)
+            const interiorGroup = new THREE.Group();
+            const floorMat = new THREE.MeshStandardMaterial({ color: 0xF8FAFC, roughness: 0.2 });
+            const floor = new THREE.Mesh(new THREE.PlaneGeometry(20, 20), floorMat);
+            floor.rotation.x = -Math.PI / 2;
+            floor.position.y = 0.05;
+            interiorGroup.add(floor);
+
+            // Interior walls & ceiling
+            const wallMat = new THREE.MeshStandardMaterial({ color: 0x1E293B, roughness: 0.8 });
+            const backWall = new THREE.Mesh(new THREE.BoxGeometry(20, 10, 0.5), wallMat);
+            backWall.position.set(0, 5, -10);
+            interiorGroup.add(backWall);
+
+            // Sofa / Furniture placeholder in luxury living room
+            const sofaMat = new THREE.MeshStandardMaterial({ color: 0xD4AF37, roughness: 0.6 });
+            const sofa = new THREE.Mesh(new THREE.BoxGeometry(6, 1.5, 2.5), sofaMat);
+            sofa.position.set(0, 0.75, -5);
+            interiorGroup.add(sofa);
+
+            interiorGroup.visible = false; // Hidden initially
+            scene.add(interiorGroup);
+
+            // Floating dust particles
+            const particlesGeo = new THREE.BufferGeometry();
+            const particlesCount = 300;
+            const posArray = new Float32Array(particlesCount * 3);
+            for(let i=0; i<particlesCount*3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 60;
+            }
+            particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            const particlesMat = new THREE.PointsMaterial({ size: 0.2, color: 0xD4AF37, transparent: true, opacity: 0.5 });
+            const particles = new THREE.Points(particlesGeo, particlesMat);
+            scene.add(particles);
+
+            // GSAP ScrollTrigger Animation timeline
+            gsap.registerPlugin(ScrollTrigger);
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#hero-scroll-container",
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: 1.5,
+                    pin: true
+                }
+            });
+
+            // Stage 1 -> Stage 2: Groundbreaking
+            tl.to(camera.position, { x: 0, y: 18, z: 35, duration: 2 }, "stage2")
+              .to(rebarGroup.scale, { y: 1, duration: 2 }, "stage2")
+              .to("#stage-1", { opacity: 0, duration: 0.5 }, "stage2")
+              .to("#stage-2", { opacity: 1, duration: 0.5 }, "+=0.5")
+
+            // Stage 2 -> Stage 3: Structural time-lapse
+              .to(camera.position, { x: 15, y: 12, z: 25, duration: 3 }, "stage3")
+              .to(buildingGroup.scale, { y: 1, duration: 3 }, "stage3")
+              .to(buildingGroup.rotation, { y: Math.PI / 4, duration: 3 }, "stage3")
+              .to("#stage-2", { opacity: 0, duration: 0.5 }, "stage3")
+              .to("#stage-3", { opacity: 1, duration: 0.5 }, "+=0.5")
+
+            // Stage 3 -> Stage 4: Grand Golden Hour Orbit Reveal
+              .to(camera.position, { x: 0, y: 10, z: 32, duration: 3 }, "stage4")
+              .to(buildingGroup.rotation, { y: Math.PI * 1.5, duration: 3 }, "stage4")
+              .to(sunLight, { intensity: 3.5, duration: 2 }, "stage4")
+              .to("#stage-3", { opacity: 0, duration: 0.5 }, "stage4")
+              .to("#stage-4", { opacity: 1, duration: 0.5 }, "+=0.5")
+
+            // Stage 4 -> Stage 5: Camera Entry into Luxury Interior
+              .to(camera.position, { x: 0, y: 3, z: 5, duration: 3 }, "stage5")
+              .to(buildingGroup.scale, { x: 0, y: 0, z: 0, duration: 1 }, "stage5")
+              .call(() => { interiorGroup.visible = true; }, [], "stage5")
+              .to("#stage-4", { opacity: 0, duration: 0.5 }, "stage5")
+              .to("#stage-5", { opacity: 1, duration: 0.5 }, "+=0.5")
+              .to(camera.position, { z: -2, duration: 2 }, "stage5_interior");
+
+            // Render loop
+            function animate() {
+                requestAnimationFrame(animate);
+                particles.rotation.y += 0.001;
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            // Window resize handler
+            window.addEventListener('resize', () => {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+        });
+    </script>
+</body>
+</html>
